@@ -1,0 +1,486 @@
+/* ============================================================
+   content.css — Styles for the Chitti Floating UI
+   ============================================================
+   These styles are injected alongside content.js into every webpage.
+   They style the floating button and panel that Chitti shows.
+   
+   IMPORTANT: All class names use "chitti-" prefix to avoid
+   conflicting with the website's own CSS styles.
+   ============================================================ */
+
+/* ---- Floating ⚡ Button ---- */
+#chitti-float-btn {
+  position: fixed;
+  z-index: 2147483647; /* Highest possible z-index — always on top */
+  display: none;       /* Hidden by default, shown on focus */
+  align-items: center;
+  gap: 5px;
+  background: linear-gradient(135deg, #20818a, #182335);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(32, 129, 138, 0.25);
+  transition: all 0.2s ease;
+  user-select: none;
+  pointer-events: all;
+  letter-spacing: 0.3px;
+}
+
+#chitti-float-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(32, 129, 138, 0.4);
+}
+
+.chitti-icon {
+  font-size: 14px;
+}
+
+/* ---- Expanded Panel ---- */
+#chitti-panel {
+  position: fixed;
+  z-index: 2147483646;
+  display: none;       /* Hidden by default */
+  flex-direction: column;
+  width: 300px;
+  background: #fffbf5;
+  border: 1px solid rgba(32, 129, 138, 0.25);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(24, 35, 53, 0.12), 0 0 20px rgba(32, 129, 138, 0.05);
+  font-family: 'Inter', -apple-system, sans-serif;
+  animation: chittiSlideIn 0.2s ease;
+}
+
+@keyframes chittiSlideIn {
+  from { opacity: 0; transform: translateY(8px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Panel Header */
+.chitti-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: rgba(255, 248, 240, 0.85);
+  border-bottom: 1px solid rgba(24, 35, 53, 0.08);
+}
+
+.chitti-panel-logo {
+  font-size: 14px;
+  font-weight: 800;
+  color: #182335;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chitti-close-btn {
+  background: rgba(24, 35, 53, 0.04);
+  border: none;
+  color: #5c6e88;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.chitti-close-btn:hover {
+  background: rgba(220, 38, 38, 0.1);
+  color: #be123c;
+}
+
+/* Panel Body */
+.chitti-panel-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px 16px;
+}
+
+.chitti-label-text {
+  font-size: 11px;
+  font-weight: 600;
+  color: #5c6e88;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* Dropdown */
+.chitti-select {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid rgba(24, 35, 53, 0.08);
+  border-radius: 8px;
+  padding: 9px 12px;
+  color: #182335;
+  font-family: inherit;
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.chitti-select:focus {
+  border-color: #20818a;
+  box-shadow: 0 0 0 3px rgba(32, 129, 138, 0.12);
+}
+
+.chitti-select option {
+  background: #ffffff;
+  color: #182335;
+}
+
+/* Textarea */
+.chitti-textarea {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid rgba(24, 35, 53, 0.08);
+  border-radius: 8px;
+  padding: 9px 12px;
+  color: #182335;
+  font-family: inherit;
+  font-size: 12px;
+  outline: none;
+  resize: none;
+  line-height: 1.5;
+  transition: all 0.2s;
+}
+
+.chitti-textarea:focus {
+  border-color: #20818a;
+}
+
+.chitti-textarea::placeholder {
+  color: #8c9cb2;
+}
+
+/* Generate Button */
+.chitti-generate-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #20818a, #182335);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 11px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(32, 129, 138, 0.2);
+}
+
+.chitti-generate-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(32, 129, 138, 0.35);
+}
+
+.chitti-generate-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Reply Area */
+.chitti-reply-area {
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(32, 129, 138, 0.05);
+  border: 1px solid rgba(32, 129, 138, 0.15);
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.chitti-reply-text {
+  font-size: 13px;
+  color: #182335;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.chitti-reply-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.chitti-insert-btn {
+  flex: 1;
+  background: rgba(32, 129, 138, 0.15);
+  border: 1px solid rgba(32, 129, 138, 0.3);
+  color: #167a6d;
+  border-radius: 6px;
+  padding: 7px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.chitti-insert-btn:hover {
+  background: rgba(32, 129, 138, 0.25);
+}
+
+.chitti-regen-btn {
+  flex: 1;
+  background: rgba(24, 35, 53, 0.04);
+  border: 1px solid rgba(24, 35, 53, 0.10);
+  color: #5c6e88;
+  border-radius: 6px;
+  padding: 7px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.chitti-regen-btn:hover {
+  background: rgba(24, 35, 53, 0.08);
+  color: #182335;
+}
+
+/* Error message */
+.chitti-error {
+  background: rgba(220, 38, 38, 0.06);
+  border: 1px solid rgba(220, 38, 38, 0.15);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 12px;
+  color: #b91c1c;
+  line-height: 1.5;
+}
+
+/* ---- Mood override select in panel ---- */
+.chitti-select option {
+  background: #ffffff;
+}
+
+
+/* ============================================================
+   AGENT MODE — Countdown Toast
+   ============================================================
+   This toast appears when Agent Mode is about to auto-send
+   a reply. It shows a 3-second countdown with a Cancel button.
+   ============================================================ */
+
+#chitti-agent-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 2147483647;
+  background: #fffbf5;
+  border: 1px solid rgba(32, 129, 138, 0.25);
+  border-radius: 16px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 280px;
+  max-width: 360px;
+  box-shadow: 0 8px 32px rgba(24, 35, 53, 0.08), 0 0 20px rgba(32, 129, 138, 0.05);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  animation: chittiSlideIn 0.25s ease;
+}
+
+.chitti-agent-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #5c6e88;
+}
+
+.chitti-agent-header strong {
+  color: #182335;
+}
+
+.chitti-agent-timer {
+  font-size: 11px;
+  color: #167a6d;
+  font-weight: 600;
+  background: rgba(32, 129, 138, 0.08);
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(32, 129, 138, 0.18);
+}
+
+#chitti-countdown-num {
+  font-weight: 700;
+  color: #20818a;
+}
+
+.chitti-agent-preview {
+  font-size: 12px;
+  color: #2b384c;
+  font-style: italic;
+  line-height: 1.5;
+  padding: 8px 10px;
+  background: rgba(32, 129, 138, 0.04);
+  border-radius: 8px;
+  border: 1px solid rgba(32, 129, 138, 0.1);
+  word-break: break-word;
+}
+
+.chitti-agent-cancel-btn {
+  background: rgba(220, 38, 38, 0.06);
+  border: 1px solid rgba(220, 38, 38, 0.15);
+  color: #b91c1c;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s;
+}
+
+.chitti-agent-cancel-btn:hover {
+  background: rgba(220, 38, 38, 0.12);
+  color: #b91c1c;
+}
+
+
+/* ============================================================
+   SUGGESTION MODE — Suggestion Bar
+   ============================================================
+   This bar appears below any text input when Suggestion Mode
+   is active and the user has paused typing.
+   Tab key accepts the suggestion.
+   ============================================================ */
+
+#chitti-suggestion-bar {
+  position: fixed;
+  z-index: 2147483646;
+  background: #fffbf5;
+  border: 1px solid rgba(32, 129, 138, 0.25);
+  border-radius: 10px;
+  padding: 8px 12px;
+  display: none;           /* Hidden by default */
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 12px;
+  box-shadow: 0 4px 15px rgba(24, 35, 53, 0.06), 0 0 10px rgba(32, 129, 138, 0.03);
+  animation: chittiSlideIn 0.2s ease;
+  overflow: hidden;
+}
+
+.chitti-suggest-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.chitti-suggest-text {
+  color: #20818a;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-style: italic;
+}
+
+.chitti-suggest-hint {
+  font-size: 10px;
+  color: #5c6e88;
+  background: rgba(24, 35, 53, 0.04);
+  border: 1px solid rgba(24, 35, 53, 0.1);
+  border-radius: 4px;
+  padding: 2px 6px;
+  flex-shrink: 0;
+  font-family: monospace;
+}
+
+.chitti-suggest-x {
+  background: none;
+  border: none;
+  color: #475569;
+  cursor: pointer;
+  font-size: 11px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  line-height: 1;
+  transition: color 0.15s;
+}
+
+.chitti-suggest-x:hover {
+  color: #ef4444;
+}
+
+
+/* ============================================================
+   GENERAL TOAST NOTIFICATION
+   ============================================================
+   Brief top-right notification for mode changes and status.
+   ============================================================ */
+
+#chitti-toast {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 2147483647;
+  background: #fffbf5;
+  border: 1px solid rgba(32, 129, 138, 0.25);
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #182335;
+  opacity: 0;
+  transform: translateY(-14px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  box-shadow: 0 4px 16px rgba(24, 35, 53, 0.08);
+  max-width: 340px;
+  pointer-events: none; /* Don't block clicks */
+  line-height: 1.4;
+}
+
+
+/* ============================================================
+   INFLUENCER MASS-REPLY BUTTON
+   ============================================================
+   Floating button shown on Instagram posts
+   ============================================================ */
+
+#chitti-mass-reply-btn {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 2147483646;
+  background: linear-gradient(135deg, #20818a 0%, #182335 100%);
+  border: 1px solid rgba(32, 129, 138, 0.4);
+  border-radius: 99px;
+  padding: 12px 20px;
+  display: none; /* Hidden by default */
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(32, 129, 138, 0.2), 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  animation: chittiSlideIn 0.3s ease;
+}
+
+#chitti-mass-reply-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(16, 185, 129, 0.4), 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+#chitti-mass-reply-btn:active {
+  transform: translateY(0px);
+}
